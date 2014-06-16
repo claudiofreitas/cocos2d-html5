@@ -180,7 +180,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     //for new renderer
     _curLevel: -1,
     _rendererCmd: null,
-    _renderCmdDiry: false,
+    _renderCmdDiry: false,                                          //rendererCmd dirty flag
 
     _initNode: function () {
         var _t = this;
@@ -1289,7 +1289,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             child.cleanup();
 
         // set parent nil at the end
-        child.parent = null;
+        child._parent = null;
+        child._cachedParent = null;
 
         cc.arrayRemoveObject(this._children, child);
     },
@@ -2115,7 +2116,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         if (!_t._visible) return;
 
         if( _t._parent)
-            _t._curLevel = _t._parent._curLevel;
+            _t._curLevel = _t._parent._curLevel + 1;
 
         //visit for canvas
         var i, children = _t._children, child;

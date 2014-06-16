@@ -1021,6 +1021,7 @@ cc.Sprite = cc.NodeRGBA.extend(/** @lends cc.Sprite# */{
             if (cacheTextureForColor) {
                 this._colorized = true;
 
+
                 this._rendererCmd._textureCoord.renderX = 0;
                 this._rendererCmd._textureCoord.renderY = 0;
 
@@ -1571,8 +1572,6 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         //set the data to the rendererCmd
         locCmd._texture = this._texture;
         locCmd._isLighterMode = this._isLighterMode;
-        locCmd._flippedX = this._flippedX;
-        locCmd._flippedY = this._flippedY;
         locCmd._opacity = this._displayedOpacity / 255;
 
         var _t = this, locEGL_ScaleX = cc.view.getScaleX(), locEGL_ScaleY = cc.view.getScaleY();
